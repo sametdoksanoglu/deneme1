@@ -1,1 +1,1 @@
-echo 'Test Commit: "${GIT_PREVIOUS_SUCCESSFUL_COMMIT}"'
+echo "Test Commit: ${GIT_PREVIOUS_SUCCESSFUL_COMMIT}"
