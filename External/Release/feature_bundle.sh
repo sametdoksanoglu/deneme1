@@ -12,4 +12,5 @@ printf "%-50s : %10s\n" "ENVIRONMENT" ${ENVIRONMENT}
 printf "%-50s : %10s\n" "BUNDLE_NAME" ${BUNDLE_NAME}
 printf "%-50s : %10s\n" "BUNDLE_QUALITY" ${BUNDLE_QUALITY}
 printf "%-50s : %10s\n" "PLATFORM" ${PLATFORM}
+printf "%-50s : %10s\n" "BUNDLE_THEME" ${BUNDLE_THEME}
 printf "\n\n"
