@@ -8,7 +8,7 @@ if [ $ENVIRONMENT == 'prod' ]
 then
   if [ ! -z $(aws s3 ls "s3://$S3_PROD_REMOTE_TASK_CONFIG_PATH/$BUILD_NUMBER.json" | grep -iow $BUILD_NUMBER.json) ]
   then 
-    echo "Remote Level Json Already Exists. Nothing Uploaded"; 
+    echo "\033[33Remote Level Json Already Exists. Nothing Uploaded\033[0m\n"; 
     exit 0
   fi
 
