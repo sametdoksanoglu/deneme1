@@ -3,15 +3,15 @@
 S3_DEV_REMOTE_TASK_CONFIG_PATH="delete-remote-task-config"
 S3_PROD_REMOTE_TASK_CONFIG_PATH="delete-remote-task-config/prod"
 
-if [ ! -z $(aws s3 ls "s3://$S3_DEV_REMOTE_TASK_CONFIG_PATH/$BUILD_NUMBER.json" | grep -iow $BUILD_NUMBER.json) ]
-then 
-  echo "Remote Task Config Json Already Exists. Nothing Uploaded";
-  exit 0
-fi
-
 touch $BUILD_NUMBER.json
 if [ $ENVIRONMENT == 'prod' ]
 then
+  if [ ! -z $(aws s3 ls "s3://$S3_PROD_REMOTE_TASK_CONFIG_PATH/$BUILD_NUMBER.json" | grep -iow $BUILD_NUMBER.json) ]
+  then 
+    echo "Remote Level Json Already Exists. Nothing Uploaded"; 
+    exit 0
+  fi
+
   aws s3 cp "$BUILD_NUMBER.json" s3://$S3_PROD_REMOTE_TASK_CONFIG_PATH/$BUILD_NUMBER.json
   if [ ! -z $(aws s3 ls "s3://$S3_PROD_REMOTE_TASK_CONFIG_PATH/$BUILD_NUMBER.json" | grep -iow $BUILD_NUMBER.json) ]
   then 
@@ -21,6 +21,12 @@ then
     exit 1
   fi
 else
+  if [ ! -z $(aws s3 ls "s3://$S3_DEV_REMOTE_LEVEL_PATH/$BUILD_NUMBER.json" | grep -iow $BUILD_NUMBER.json) ]
+  then 
+    echo "Remote Level Json Already Exists. Nothing Uploaded"; 
+    exit 0
+  fi
+
   aws s3 cp  "$BUILD_NUMBER.json" s3://$S3_DEV_REMOTE_TASK_CONFIG_PATH/$BUILD_NUMBER.json
   if [ ! -z $(aws s3 ls "s3://$S3_DEV_REMOTE_TASK_CONFIG_PATH/$BUILD_NUMBER.json" | grep -iow $BUILD_NUMBER.json) ]
   then 
