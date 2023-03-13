@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 S3_DEV_REMOTE_TASK_CONFIG_PATH="delete-remote-task-config"
-S3_PROD_REMOTE_TASK_CONFIG_PATH="delete-remote-task-config"
+S3_PROD_REMOTE_TASK_CONFIG_PATH="delete-remote-task-config/prod"
 
 if [ ! -z $(aws s3 ls "s3://$S3_DEV_REMOTE_TASK_CONFIG_PATH/$BUILD_NUMBER.json" | grep -iow $BUILD_NUMBER.json) ]
 then 
