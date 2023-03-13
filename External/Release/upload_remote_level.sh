@@ -3,7 +3,7 @@
 S3_DEV_REMOTE_LEVEL_PATH="delete-remote-level/versions/"
 S3_PROD_REMOTE_LEVEL_PATH="delete-remote-level/versions/"
 
-if [ aws s3 ls "s3://$S3_PROD_REMOTE_LEVEL_PATH/$BUILD_NUMBER.json" | grep -iow "$BUILD_NUMBER.json" ]
+if [ aws s3 ls "s3://$S3_PROD_REMOTE_LEVEL_PATH/$BUILD_NUMBER.json" | grep -iow "$BUILD_NUMBER.json" | wc -l ]
 then 
   echo "Remote Level Json Already Exists. Nothing Uploaded"; 
   exit 0
