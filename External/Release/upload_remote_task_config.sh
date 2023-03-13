@@ -12,7 +12,7 @@ fi
 touch $BUILD_NUMBER.json
 if [ $ENVIRONMENT == 'prod' ]
 then
-  aws s3 cp  $BUILD_NUMBER.json s3://$S3_DEV_REMOTE_TASK_CONFIG_PATH/$BUILD_NUMBER.json
+  aws s3 cp "$BUILD_NUMBER.json" s3://$S3_DEV_REMOTE_TASK_CONFIG_PATH/$BUILD_NUMBER.json
   if [ ! -z $(aws s3 ls "s3://$S3_DEV_REMOTE_TASK_CONFIG_PATH/$BUILD_NUMBER.json" | grep -iow $BUILD_NUMBER.json) ]
   then 
     echo "Remote Task Config Json Succesfully Uploaded"; 
@@ -21,7 +21,7 @@ then
     exit 1
   fi
 else
-  aws s3 cp  $BUILD_NUMBER.json s3://$S3_PROD_REMOTE_TASK_CONFIG_PATH/$BUILD_NUMBER.json
+  aws s3 cp  "$BUILD_NUMBER.json" s3://$S3_PROD_REMOTE_TASK_CONFIG_PATH/$BUILD_NUMBER.json
   if [ ! -z $(aws s3 ls "s3://$S3_PROD_REMOTE_TASK_CONFIG_PATH/$BUILD_NUMBER.json" | grep -iow $BUILD_NUMBER.json) ]
   then 
     echo "Remote Task Config Json Succesfully Uploaded"; 
