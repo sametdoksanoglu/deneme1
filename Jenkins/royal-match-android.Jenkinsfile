@@ -45,10 +45,7 @@ pipeline {
       steps {
         sh 'echo " last successfull: ${GIT_PREVIOUS_SUCCESSFUL_COMMIT}"'
 
-        sh """
-           #!/bin/sh
-           source External/Release/build_android.sh
-        """
+        sh "set +v;source External/Release/build_android.sh"
       }
     }
 
