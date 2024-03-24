@@ -43,9 +43,9 @@ pipeline {
 
     stage('Build Android') {
       steps {
-        sh 'echo $SHELL;echo " last successfull: ${GIT_PREVIOUS_SUCCESSFUL_COMMIT}"'
+        sh 'echo " last successfull: ${GIT_PREVIOUS_SUCCESSFUL_COMMIT}"'
 
-        sh "echo \$SHELL;set +v;set +x;source External/Release/build_android.sh"
+        sh "source External/Release/build_android.sh"
       }
     }
 
