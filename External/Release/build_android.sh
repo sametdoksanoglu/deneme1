@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 echo $SHELL
 printf "\n\n"
 printf "%-50s : %10s\n" "Key"  "Value"
