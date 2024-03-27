@@ -50,18 +50,18 @@ pipeline {
           bash External/Release/build_android.sh
         '''
       }
-    }
-    
-    post {
-      success {
-        script {
-            if (params.ENVIRONMENT == 'prod')
-              sh 'echo success'
-            // androidApkUpload googleCredentialsId: 'Royal Match',
-            //     filesPattern: "**/Build/royal-match-${params.PARENT_BUILD_NUMBER}.aab"
-            //     trackName: 'internal',
-            //     rolloutPercentage: '100' 
+      post {
+        success {
+          script {
+              if (params.ENVIRONMENT == 'prod')
+                sh 'echo success'
+              // androidApkUpload googleCredentialsId: 'Royal Match',
+              //     filesPattern: "**/Build/royal-match-${params.PARENT_BUILD_NUMBER}.aab"
+              //     trackName: 'internal',
+              //     rolloutPercentage: '100' 
+          }
         }
       }
     }
+  }
 }
