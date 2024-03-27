@@ -1,15 +1,9 @@
 #!/bin/bash
-echo $SHELL
+ps -p $$ -ocomm=
+set -v; set +x;
 printf "\n\n"
 printf "%-50s : %10s\n" "Key"  "Value"
 printf "=%.0s"  $(seq 1 100)
 printf "\n"
 printf "%-50s : %10s\n" "WORKSPACE" ${WORKSPACE}
-already_in_prod_bundles=(1,2,3)
-if [[ ${#already_in_prod_bundles[@]} -eq 0 ]]; then
-  echo "\033[32mAll bundles are copied to prod successfully\033[0m\n"
-else
-  echo "\033[31mSome bundles already in prod. They are not updated. If they should be, please contact with Techops Team\033[0m"
-  echo "\033[31mThe bundles are: \033[0m"
-  echo "  \033[31m$bundle_parent_folder/$PLATFORM/$bundle_group_label/$bundle_group_name/$bundle_name\033[0m"
-fi
+
