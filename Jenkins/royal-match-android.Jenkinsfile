@@ -44,12 +44,13 @@ pipeline {
     stage('Build Android') {
       steps {
         sh 'echo " last successfull: ${GIT_PREVIOUS_SUCCESSFUL_COMMIT}"'
-        sh '''
+        sh(script: '''
         #!/bin/bash
-        echo "Building project..."
-        echo $SHELL
-        '''
+        echo "Building project with Bash..."
+        ps -p $$ -ocomm=
+        ''', shell: '/bin/bash')
       }
+
     }
 
     }
