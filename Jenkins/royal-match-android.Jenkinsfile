@@ -44,10 +44,9 @@ pipeline {
     stage('Build Android') {
       steps {
         sh 'echo " last successfull: ${GIT_PREVIOUS_SUCCESSFUL_COMMIT}"'
-        sh(returnStdout: true, script: "sh External/Release/build_ios.sh")
         
         sh '''
-          bash External/Release/build_android.sh
+          sh External/Release/build_android.sh
         '''
       }
       post {
