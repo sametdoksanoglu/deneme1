@@ -46,7 +46,7 @@ pipeline {
         sh 'echo " last successfull: ${GIT_PREVIOUS_SUCCESSFUL_COMMIT}"'
         
         sh '''
-          sh External/Release/build_android.sh
+          source External/Release/build_android.sh
         '''
       }
       post {
