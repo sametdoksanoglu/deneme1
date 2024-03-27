@@ -44,8 +44,11 @@ pipeline {
     stage('Build Android') {
       steps {
         sh 'echo " last successfull: ${GIT_PREVIOUS_SUCCESSFUL_COMMIT}"'
-
-        sh('sh External/Release/build_android.sh')
+        sh '''
+        #!/bin/bash
+        echo "Building project..."
+        echo $SHELL
+        '''
       }
     }
 
