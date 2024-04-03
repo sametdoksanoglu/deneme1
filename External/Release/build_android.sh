@@ -7,3 +7,7 @@ printf "=%.0s"  $(seq 1 100)
 printf "\n"
 printf "%-50s : %10s\n" "WORKSPACE" ${WORKSPACE}
 
+if [[ $BUILD_BUNDLE == "false" ]]; then
+    # Remove all bundles
+    echo "BUILD_BUNDLE: $BUILD_BUNDLE"
+fi
